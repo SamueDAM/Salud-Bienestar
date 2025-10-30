@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Salud & Bienestar — Tu guía fitness</title>
+  <meta name="description" content="Consejos, rutinas, dietas personalizadas, buscador de gimnasios y calculadoras (IMC, proteínas, calorías)." />
+  <style>
+    /* Reset sencillo */
+    :root{
+      --accent:#1fb6ff; --dark:#0f1724; --muted:#6b7280; --card:#ffffff; --glass: rgba(255,255,255,0.06);
+      --maxw:1100px;
+      --radius:12px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#f7fbff 0%, #eef6ff 100%);color:#0b1220}
+    a{color:var(--accent)}
+    header{background:linear-gradient(90deg, rgba(31,182,255,0.12), rgba(31,182,255,0.05));backdrop-filter: blur(6px);padding:18px 16px;box-shadow:0 6px 18px rgba(15,23,36,0.04)}
+    .container{max-width:var(--maxw);margin:0 auto;padding:16px}
+    .nav{display:flex;align-items:center;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    nav a{margin-left:8px;text-decoration:none;color:inherit;font-weight:600}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:center;padding:36px 0}
+    .card{background:var(--card);border-radius:var(--radius);padding:20px;box-shadow:0 10px 30px rgba(15,23,36,0.06)}
+    .hero h1{font-size:28px;margin:0 0 8px}
+    .hero p{color:var(--muted);margin:0}
+    .cta{display:inline-block;margin-top:14px;padding:10px 16px;border-radius:10px;background:var(--accent);color:white;text-decoration:none;font-weight:700}
+
+    /* Grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+    .feature{padding:14px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);min-height:120px}
+    .feature h3{margin:0 0 8px}
+    .two-col{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-top:18px}
+
+    /* Forms and lists */
+    label{display:block;margin-bottom:6px;font-weight:600}
+    input,select,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef9;background:white}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:var(--dark);color:white;text-decoration:none}
+
+    /* Results */
+    .result{background:linear-gradient(90deg, rgba(31,182,255,0.04), rgba(124,58,237,0.02));padding:12px;border-radius:8px}
+
+    /* Responsive */
+    @media (max-width:1000px){.hero{grid-template-columns:1fr} .two-col{grid-template-columns:1fr} .grid{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:680px){.grid{grid-template-columns:1fr} header .nav{flex-direction:column;align-items:flex-start} }
+
+    footer{padding:24px 0;color:var(--muted);text-align:center}
+
+    /* Utilities */
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+    ul.clean{padding:0;margin:0;list-style:none}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">SB</div>
+        <div>
+          <div style="font-weight:800">Salud & Bienestar</div>
+          <div class="small muted">Consejos, rutinas y calculadoras</div>
+        </div>
+      </div>
+      <nav style="margin-left:auto">
+        <a href="#consejos">Consejos</a>
+        <a href="#rutinas">Rutinas</a>
+        <a href="#gimnasios">Gimnasios</a>
+        <a href="#dietas">Dietas</a>
+        <a href="#calculadoras">Calculadoras</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+<section id="galeria" style="margin-top:24px">
+  <div class="card">
+    <h2>Galería de Salud & Bienestar</h2>
+    <p class="muted">Inspiración en rutinas, alimentación y fitness.</p>
+    
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:12px; margin-top:12px">
+      <img src="img/gimnasio.jpg" alt="Gimnasio y entrenamiento" style="width:100%; border-radius:12px; object-fit:cover; height:200px;">
+      <img src="img/yoga.jpg" alt="Yoga y bienestar" style="width:100%; border-radius:12px; object-fit:cover; height:200px;">
+      <img src="img/comida.jpg" alt="Alimentación saludable" style="width:100%; border-radius:12px; object-fit:cover; height:200px;">
+      <img src="img/fitness.jpg" alt="Ejercicio en gimnasio" style="width:100%; border-radius:12px; object-fit:cover; height:200px;">
+      <img src="img/running.jpg" alt="Cardio y running" style="width:100%; border-radius:12px; object-fit:cover; height:200px;">
+      <img src="img/proteina.jpg" alt="Comida y proteínas" style="width:100%; border-radius:12px; object-fit:cover; height:200px;">
+    </div>
+  </div>
+</section>
+
+
+
+
+    <section class="hero">
+      <div>
+        <div class="card">
+          <h1>Mejora tu salud: consejos prácticos y planes personalizados</h1>
+          <p>Encuentra rutinas de gimnasio, dietas adaptadas, busca gimnasios cerca de ti y calcula tu IMC, calorías y proteínas diarias. Todo en un mismo lugar.</p>
+          <a class="cta" href="#calculadoras">Comienza con tus cálculos</a>
+
+          <div class="grid" style="margin-top:18px">
+            <div class="feature">
+              <h3>Consejos diarios</h3>
+              <p class="muted">Pequeños hábitos que hacen la diferencia: hidratación, sueño, movilidad y más.</p>
+            </div>
+            <div class="feature">
+              <h3>Rutinas para gimnasio</h3>
+              <p class="muted">Programas para principiantes, intermedios y avanzados.</p>
+            </div>
+            <div class="feature">
+              <h3>Dietas personalizadas</h3>
+              <p class="muted">Sugerencias según tus objetivos: perder peso, ganar músculo o mantenerte.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card" style="text-align:center">
+          <h3 style="margin:0">Plan semilla gratuito</h3>
+          <p class="muted small" style="margin:6px 0">Recibe una rutina de 4 semanas y un plan de comidas básico para comenzar.</p>
+          <a class="btn" href="#contacto" onclick="alert('Formulario de contacto simulado — implementa backend para recibir mensajes')">Quiero el plan</a>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Consejos -->
+    <section id="consejos" style="margin-top:24px">
+      <div class="card">
+        <h2>Consejos esenciales de salud</h2>
+        <p class="muted">Rutina diaria con énfasis en hábitos sostenibles.</p>
+        <ul class="clean" style="margin-top:12px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+          <li class="card" style="padding:12px"><strong>Hidratación</strong><p class="muted small">Beber agua regularmente. Si haces ejercicio, añade 300-600 ml extra.</p></li>
+          <li class="card" style="padding:12px"><strong>Sueño</strong><p class="muted small">7–9 horas por noche para recuperación muscular y cognitiva.</p></li>
+          <li class="card" style="padding:12px"><strong>Movilidad</strong><p class="muted small">5–10 minutos de estiramientos o movilidad al día.</p></li>
+        </ul>
+      </div>
+    </section>
+
+   <!-- Rutinas profesionales -->
+<section id="rutinas" style="margin-top:18px">
+  <div class="card">
+    <h2>Rutinas de gimnasio avanzadas y completas</h2>
+    <p class="muted">Elige tu nivel y objetivo para ver un plan sugerido de ejercicios semanales.</p>
+
+    <div style="margin-top:12px">
+      <label for="nivel">Nivel</label>
+      <select id="nivel">
+        <option value="beginner">Principiante</option>
+        <option value="intermediate">Intermedio</option>
+        <option value="advanced">Avanzado</option>
+      </select>
+
+      <label for="objetivo" style="margin-top:8px">Objetivo</label>
+      <select id="objetivo">
+        <option value="general">Salud general</option>
+        <option value="muscle">Ganar músculo</option>
+        <option value="fatloss">Perder grasa</option>
+      </select>
+
+      <a class="btn" style="margin-top:12px;display:inline-block" onclick="generarRutinaProfesional()">Generar rutina</a>
+
+      <div id="rutinaResult" style="margin-top:12px"></div>
+    </div>
+  </div>
+
+  <aside class="card" style="margin-top:12px">
+    <h3>Consejos de entrenamiento</h3>
+    <ul class="clean" style="display:grid;grid-template-columns:1fr 1fr; gap:12px; margin-top:8px">
+      <li>Prioriza la técnica en lugar de el peso</li>
+      <li>Calienta 5-10 min antes de cada sesión</li>
+      <li>Descansa 2-3 minutos entre series</li>
+      <li>Incrementa el peso gradualmente</li>
+      <li>Incluye estiramientos al empezar y al finalizar</li>
+      <li>Hidrátate constantemente sin excederse</li>
+    </ul>
+  </aside>
+</section>
+
+<script>
+function generarRutinaProfesional(){
+  const nivel = document.getElementById('nivel').value;
+  const objetivo = document.getElementById('objetivo').value;
+  let html = '<h4>Rutina sugerida por nivel y objetivo</h4>';
+
+  if(nivel==='beginner'){
+    html += '<p><strong>3 días/sem — Full body</strong></p>';
+    html += '<ol>';
+    html += '<li>Sentadillas 3x12</li>';
+    html += '<li>Press de banca 3x10</li>';
+    html += '<li>Remo con mancuerna 3x12</li>';
+    html += '<li>Press militar con mancuernas 3x10</li>';
+    html += '<li>Curl bíceps 3x12</li>';
+    html += '<li>Extensión tríceps 3x12</li>';
+    html += '<li>Plancha 3x40s</li>';
+    html += '<li>Elevaciones laterales 3x12</li>';
+    html += '</ol>';
+  }
+  else if(nivel==='intermediate'){
+    html += '<p><strong>4 días/sem — Dividido push/pull</strong></p>';
+    html += '<ol>';
+    html += '<li>Pecho: Press banca 4x8-10, Aperturas 3x12</li>';
+    html += '<li>Espalda: Dominadas 4xMax, Remo barra 4x10</li>';
+    html += '<li>Hombros: Press militar 3x10, Elevaciones laterales 3x12</li>';
+    html += '<li>Piernas: Sentadillas 4x8-10, Peso muerto rumano 3x10</li>';
+    html += '<li>Brazos: Curl bíceps 3x12, Fondos tríceps 3x12</li>';
+    html += '<li>Abdominales: Plancha 3x50s, Crunch 3x15</li>';
+    html += '</ol>';
+  }
+  else{
+    html += '<p><strong>5 días/sem — Hipertrofia avanzada</strong></p>';
+    html += '<ol>';
+    html += '<li>Lunes (Pecho + Tríceps): Press banca 4x8-10, Aperturas 3x12, Fondos 3x12</li>';
+    html += '<li>Martes (Espalda + Bíceps): Dominadas 4xMax, Remo barra 4x10, Curl bíceps 3x12</li>';
+    html += '<li>Miércoles (Piernas): Sentadillas 4x8-10, Prensa 3x12, Peso muerto rumano 3x10</li>';
+    html += '<li>Jueves (Hombros + Abdominales): Press militar 4x8-10, Elevaciones laterales 3x12, Plancha 3x60s</li>';
+    html += '<li>Viernes (Full body ligero o circuito): Burpees, Kettlebell swing, Flexiones, Remo con TRX</li>';
+    html += '</ol>';
+  }
+
+  // Ajustes según objetivo
+  if(objetivo==='muscle') html += '<p class="muted">Consejo: Prioriza sobrecarga progresiva y proteína alta (~1.8g/kg/día).</p>';
+  if(objetivo==='fatloss') html += '<p class="muted">Consejo: Añade 15-20 min de cardio moderado y déficit calórico ligero.</p>';
+
+  document.getElementById('rutinaResult').innerHTML = html;
+  window.scrollTo({top: document.getElementById('rutinas').offsetTop, behavior:'smooth'});
+}
+</script>
+
+
+   
+<!-- Pirámide de alimentos para gym -->
+<section id="piramide" style="margin-top:20px">
+  <div class="card">
+    <h2>Pirámide de alimentos recomendada para el gimnasio</h2>
+    <p class="muted">Distribución de macronutrientes y alimentos según su importancia.</p>
+
+    <div style="display:grid; grid-template-columns:1fr; gap:12px; margin-top:12px; text-align:center">
+      <!-- Nivel 1: Base -->
+      <div style="background:#d1fae5; padding:12px; border-radius:12px;">
+        <strong>Carbohidratos complejos</strong><br>
+        Avena, arroz integral, quinoa, patatas, pan integral
+      </div>
+
+      <!-- Nivel 2 -->
+      <div style="background:#bfdbfe; padding:12px; border-radius:12px;">
+        <strong>Proteínas magras</strong><br>
+        Pollo, pavo, huevos, pescado, legumbres, tofu
+      </div>
+
+      <!-- Nivel 3 -->
+      <div style="background:#fde68a; padding:12px; border-radius:12px;">
+        <strong>Frutas y verduras</strong><br>
+        Brócoli, espinaca, manzana, plátano, frutos rojos
+      </div>
+
+      <!-- Nivel 4: Cima -->
+      <div style="background:#fca5a5; padding:12px; border-radius:12px;">
+        <strong>Grasas saludables</strong><br>
+        Aceite de oliva, aguacate, frutos secos, semillas
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Dietas -->
+    <section id="dietas" style="margin-top:20px">
+      <div class="card">
+        <h2>Dietas y planes personalizados</h2>
+        <p class="muted">Generador básico de plan según necesidades calóricas y objetivo.</p>
+
+        <label for="goal">Objetivo</label>
+        <select id="goal">
+          <option value="maintain">Mantener peso</option>
+          <option value="lose">Perder grasa</option>
+          <option value="gain">Ganar músculo</option>
+        </select>
+
+        <label for="calFrom">Introduce las calorías objetivo (si las sabes) o usa las calculadoras abajo</label>
+        <input id="calFrom" placeholder="Opcional: calorías diarias" />
+        <a class="btn" style="margin-top:8px" onclick="generarDieta()">Generar dieta semanal</a>
+
+        <div id="dietaResult" style="margin-top:12px"></div>
+      </div>
+    </section>
+
+    <!-- Calculadoras -->
+    <section id="calculadoras" style="margin-top:20px">
+      <div class="card">
+        <h2>Calculadoras</h2>
+        <p class="muted">IMC, Proteína diaria y Calorías (Mifflin-St Jeor)</p>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px">
+          <div class="card">
+            <h3>IMC (BMI)</h3>
+            <label>Peso (kg)</label><input id="pesoBMI" type="number" />
+            <label>Altura (cm)</label><input id="alturaBMI" type="number" />
+            <a class="btn" style="margin-top:8px;display:inline-block" onclick="calcularIMC()">Calcular IMC</a>
+            <div id="resBMI" class="result" style="margin-top:8px"></div>
+          </div>
+
+          <div class="card">
+            <h3>Proteína diaria</h3>
+            <label>Peso (kg)</label><input id="pesoProt" type="number" />
+            <label>Nivel actividad</label>
+            <select id="actProt">
+              <option value="1.2">Bajo (1.0–1.3)</option>
+              <option value="1.4">Moderado (1.4)</option>
+              <option value="1.6">Alto (1.6)</option>
+            </select>
+            <label>Objetivo</label>
+            <select id="goalProt">
+              <option value="maintain">Mantener</option>
+              <option value="muscle">Ganar músculo</option>
+              <option value="cut">Perder grasa</option>
+            </select>
+            <a class="btn" style="margin-top:8px;display:inline-block" onclick="calcularProteina()">Calcular proteína</a>
+            <div id="resProt" class="result" style="margin-top:8px"></div>
+          </div>
+
+          <div class="card">
+            <h3>Calorías diarias (Mifflin-St Jeor)</h3>
+            <label>Sexo</label>
+            <select id="sexCal"><option value="male">Hombre</option><option value="female">Mujer</option></select>
+            <label>Peso (kg)</label><input id="pesoCal" type="number" />
+            <label>Altura (cm)</label><input id="alturaCal" type="number" />
+            <label>Edad</label><input id="ageCal" type="number" />
+            <label>Nivel de actividad</label>
+            <select id="actCal">
+              <option value="1.2">Sedentario</option>
+              <option value="1.375">Ligero</option>
+              <option value="1.55">Moderado</option>
+              <option value="1.725">Activo</option>
+              <option value="1.9">Muy activo</option>
+            </select>
+            <a class="btn" style="margin-top:8px;display:inline-block" onclick="calcularCalorias()">Calcular calorías</a>
+            <div id="resCal" class="result" style="margin-top:8px"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+  </main>
+
+
+
+  <script>
+    // -- Rutina generator (simple heuristics)
+    function generarRutina(){
+      const nivel = document.getElementById('nivel').value;
+      const objetivo = document.getElementById('objetivo').value;
+      let html = '<h4>Rutina sugerida</h4>';
+      if(nivel==='beginner'){
+        html += '<p><strong>3 días/sem — Full body</strong></p><ol>';
+        html += '<li>Sentadillas 3x8-12</li><li>Press horizontal 3x8-12</li><li>Remo 3x8-12</li><li>Hiperextensiones 3x10</li><li>Plancha 3x30s</li>';
+        html += '</ol>';
+      } else if(nivel==='intermediate'){
+        html += '<p><strong>4 días/sem — Dividido push/pull</strong></p><ol>';
+        html += '<li>Press banca 4x6-10</li><li>Press militar 3x6-10</li><li>Dominadas 4xMax</li><li>Sentadilla 4x6-10</li>';
+        html += '</ol>';
+      } else {
+        html += '<p><strong>5 días/sem — Enfocado hipertrofia</strong></p><ol>';
+        html += '<li>Pecho 4x8-12</li><li>Espalda 4x8-12</li><li>Pierna 4x6-10</li><li>Hombro 3x8-12</li><li>Bíceps/Tríceps 3x8-12</li>';
+        html += '</ol>';
+      }
+      // ajustar para objetivo
+      if(objetivo==='muscle') html += '<p class="muted">Consejo: prioriza una ligera superávit calórico y proteína alta.</p>';
+      if(objetivo==='fatloss') html += '<p class="muted">Consejo: agrega trabajo cardiovascular 2 veces por semana y crea déficit moderado.</p>';
+      document.getElementById('rutinaResult').innerHTML = html;
+      window.scrollTo({top: document.getElementById('rutinas').offsetTop, behavior:'smooth'});
+    }
+
+    // -- IMC
+    function calcularIMC(){
+      const peso = parseFloat(document.getElementById('pesoBMI').value);
+      const altura = parseFloat(document.getElementById('alturaBMI').value)/100;
+      if(!peso || !altura){ document.getElementById('resBMI').innerText='Introduce peso y altura válidos.'; return; }
+      const imc = peso / (altura*altura);
+      let categoria = '';
+      if(imc<18.5) categoria='Bajo peso'; else if(imc<25) categoria='Normal'; else if(imc<30) categoria='Sobrepeso'; else categoria='Obesidad';
+      document.getElementById('resBMI').innerHTML = `IMC: ${imc.toFixed(1)} — ${categoria}`;
+    }
+
+    // -- Proteína: recomendaciones simples
+    function calcularProteina(){
+      const peso = parseFloat(document.getElementById('pesoProt').value);
+      const act = parseFloat(document.getElementById('actProt').value);
+      const goal = document.getElementById('goalProt').value;
+      if(!peso){ document.getElementById('resProt').innerText='Introduce tu peso.'; return; }
+      // base: 1.2 g/kg para mantenimiento, 1.6-2.2 para ganar músculo, 1.6 para perder grasa
+      let factor = 1.2;
+      if(goal==='muscle') factor = 1.8;
+      if(goal==='cut') factor = 1.6;
+      // ajustar por actividad
+      factor *= act/1.2;
+      const gramos = (peso * factor).toFixed(0);
+      document.getElementById('resProt').innerHTML = `Aprox. ${gramos} g proteína/día (factor ${factor.toFixed(2)})`;
+    }
+
+    // -- Calorías (Mifflin-St Jeor) y TDEE
+    function calcularCalorias(){
+      const sex = document.getElementById('sexCal').value;
+      const peso = parseFloat(document.getElementById('pesoCal').value);
+      const altura = parseFloat(document.getElementById('alturaCal').value);
+      const age = parseFloat(document.getElementById('ageCal').value);
+      const act = parseFloat(document.getElementById('actCal').value);
+      if(!peso || !altura || !age){ document.getElementById('resCal').innerText='Completa peso, altura y edad.'; return; }
+      // Mifflin-St Jeor
+      let bmr;
+      if(sex==='male') bmr = 10*peso + 6.25*altura - 5*age + 5;
+      else bmr = 10*peso + 6.25*altura - 5*age - 161;
+      const tdee = Math.round(bmr * act);
+      const maintain = tdee; const lose = Math.round(tdee - 500); const gain = Math.round(tdee + 300);
+      document.getElementById('resCal').innerHTML = `BMR: ${Math.round(bmr)} kcal<br>TDEE estimado: ${tdee} kcal/día<br>Mantener: ${maintain} kcal<br>Perder grasa: ~${lose} kcal<br>Ganar músculo: ~${gain} kcal`;
+    }
+
+    // -- Dieta semanal simple (macros)
+    function generarDieta(){
+      const goal = document.getElementById('goal').value;
+      let cal = parseInt(document.getElementById('calFrom').value);
+      if(!cal){ document.getElementById('dietaResult').innerHTML = '<p class="muted">Introduce tus calorías diarias (usa la calculadora si no las sabes).</p>'; return; }
+      let proteinPerc=0.25, carbPerc=0.45, fatPerc=0.30;
+      if(goal==='lose'){ proteinPerc=0.30; carbPerc=0.35; fatPerc=0.35; }
+      if(goal==='gain'){ proteinPerc=0.25; carbPerc=0.50; fatPerc=0.25; }
+      const proteinKcal = cal * proteinPerc; const carbKcal = cal * carbPerc; const fatKcal = cal * fatPerc;
+      const proteinG = Math.round(proteinKcal/4); const carbG = Math.round(carbKcal/4); const fatG = Math.round(fatKcal/9);
+      let html = `<h4>Plan diario aproximado (${cal} kcal)</h4><p class="muted small">Macros: Proteína ${proteinG} g, Carbohidratos ${carbG} g, Grasas ${fatG} g</p>`;
+      html += '<ul><li>Desayuno: Avena con fruta + 1 porción de proteína</li><li>Media mañana: Yogur o frutos secos</li><li>Comida: Proteína magra + verduras + carbohidrato complejo</li><li>Merienda: Batido o sándwich integral</li><li>Cena: Ensalada + proteína + grasa saludable</li></ul>';
+      document.getElementById('dietaResult').innerHTML = html;
+      window.scrollTo({top: document.getElementById('dietas').offsetTop, behavior:'smooth'});
+    }
+
+    // -- Buscar gimnasios (OpenStreetMap Nominatim simple)
+    async function buscarGimnasiosManual(){
+      const q = document.getElementById('citySearch').value.trim();
+      if(!q){ document.getElementById('gymsList').innerText='Escribe una ciudad o dirección.'; return; }
+      document.getElementById('gymsList').innerText='Buscando...';
+      try{
+        // Buscar coordenadas de la ciudad
+        const res = await fetch('https://nominatim.openstreetmap.org/search.php?format=jsonv2&q='+encodeURIComponent(q));
+        const j = await res.json();
+        if(!j || j.length===0){ document.getElementById('gymsList').innerText='No se encontró la ubicación.'; return; }
+        const loc = j[0];
+        buscarGimnasiosPorCoord(loc.lat, loc.lon);
+      }catch(e){ document.getElementById('gymsList').innerText='Error en búsqueda.'; }
+    }
+
+    async function buscarGimnasiosGeo(){
+      if(!navigator.geolocation){ document.getElementById('gymsList').innerText='Geolocalización no disponible.'; return; }
+      document.getElementById('gymsList').innerText='Obteniendo ubicación...';
+      navigator.geolocation.getCurrentPosition(pos=>{
+        buscarGimnasiosPorCoord(pos.coords.latitude, pos.coords.longitude);
+      }, err=>{ document.getElementById('gymsList').innerText='No se pudo obtener ubicación: '+err.message; });
+    }
+
+    async function buscarGimnasiosPorCoord(lat, lon){
+      document.getElementById('gymsList').innerText='Buscando gimnasios cercanos...';
+      try{
+        const q = `gym near ${lat} ${lon}`;
+        const url = `https://nominatim.openstreetmap.org/search.php?format=jsonv2&q=${encodeURIComponent('gimnasio near '+lat+','+lon)}`;
+        const r = await fetch(url);
+        const data = await r.json();
+        if(!data || data.length===0){ document.getElementById('gymsList').innerText='No se encontraron gimnasios.'; return; }
+        let html = '<ul class="clean">';
+        data.slice(0,8).forEach(item=>{
+          html += `<li class="card" style="margin-bottom:8px;padding:10px"><strong>${item.display_name.split(',')[0]}</strong><div class="muted small">${item.display_name}</div><a style="margin-top:8px;display:inline-block" class="btn" href="https://www.openstreetmap.org/?mlat=${item.lat}&mlon=${item.lon}#map=18/${item.lat}/${item.lon}" target="_blank">Ver en mapa</a></li>`;
+        });
+        html += '</ul>';
+        document.getElementById('gymsList').innerHTML = html;
+      }catch(e){ document.getElementById('gymsList').innerText='Error buscando gimnasios.'; }
+    }
+
+    // -- pequeñas mejoras UX
+    document.addEventListener('keydown', e=>{
+      if(e.key==='Enter'){
+        const active = document.activeElement;
+        if(active && active.id==='citySearch') buscarGimnasiosManual();
+      }
+    });
+  </script>
+</body>
+</html>
